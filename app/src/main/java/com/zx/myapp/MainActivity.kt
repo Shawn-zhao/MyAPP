@@ -1,6 +1,7 @@
 package com.zx.myapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+    Log.i("zx", "---------javaClass=" + javaClass.toString())
+    Log.i("zx", "---------javaClass.genericSuperclass=" + javaClass.genericSuperclass.toString())
 
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         val rootView: View = viewBinding.root
