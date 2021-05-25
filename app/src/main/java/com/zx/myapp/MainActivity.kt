@@ -6,19 +6,19 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.zx.myapp.databinding.ActivityMainBinding
+import java.lang.reflect.ParameterizedType
 
-class MainActivity : AppCompatActivity() {
-    private val viewModel by viewModels<MainActivityViewModel>()
-    private lateinit var viewBinding: ActivityMainBinding
+class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() {
+//    private val viewModel by viewModels<MainActivityViewModel>()
+
+    //    private lateinit var viewBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-    Log.i("zx", "---------javaClass=" + javaClass.toString())
-    Log.i("zx", "---------javaClass.genericSuperclass=" + javaClass.genericSuperclass.toString())
 
-        viewBinding = ActivityMainBinding.inflate(layoutInflater)
-        val rootView: View = viewBinding.root
-        setContentView(rootView)
+//        viewBinding = ActivityMainBinding.inflate(layoutInflater)
+//        val rootView: View = viewBinding.root
+//        setContentView(rootView)
 
         viewModel.searchPhotosResult.observe(this, { result ->
 
