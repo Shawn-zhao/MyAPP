@@ -9,14 +9,8 @@ import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
 open class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivity() {
-
-    val viewBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
-        getViewBinding(layoutInflater)
-    }
-
-    val viewModel: VM by lazy(mode = LazyThreadSafetyMode.NONE) {
-        getViewModel()
-    }
+    lateinit var viewBinding: VB
+    lateinit var viewModel: VM
 
     private fun <VB : ViewBinding> getViewBinding(inflater: LayoutInflater, position: Int = 0): VB {
         val vbClass =
@@ -33,6 +27,8 @@ open class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivity() 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = getViewModel()
+        viewBinding = getViewBinding(layoutInflater)
         setContentView(viewBinding.root)
     }
 }
